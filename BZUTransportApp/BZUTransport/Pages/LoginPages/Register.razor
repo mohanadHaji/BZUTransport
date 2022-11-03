@@ -1,0 +1,84 @@
+﻿@page "/Register"
+
+<EditForm Model="@User" OnValidSubmit="RegisterUser">
+    <DataAnnotationsValidator />
+    <!-- Name input -->
+    <div class="form-outline mb-4">
+        <input type="text" id="name" class="form-control" @bind="@User.Name" />
+        <label class="form-label" for="name">اسمك الكامل</label>
+    </div>
+
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+        <input type="email" id="email" class="form-control" @bind="@User.EmailAddress" />
+        <label class="form-label" for="email">بريدك الاكتروني</label>
+    </div>
+
+    <!-- Phone Number input -->
+    <div class="form-outline mb-4">
+        <input type="number" id="phone" class="form-control" @bind="@User.PhoneNumber" />
+        <label class="form-label" for="phone">رقم جوالك</label>
+    </div>
+
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+        <input type="password" id="password" class="form-control" @bind="@User.Password" />
+        <label class="form-label" for="password">كلمة السر</label>
+    </div>
+
+    <!-- Confirm Password input -->
+    <div class="form-outline mb-4">
+        <input type="password" id="confirmPassword" class="form-control" @bind="@User.ConfirmPassword" />
+        <label class="form-label" for="confirmPassword">تاكيد كلمة المرور</label>
+    </div>
+
+    <input type="checkbox" @onchange="eventArgs => { CheckboxClicked(eventArgs.Value); }" /> هل تمتلك سيارة؟ 
+
+    @if (User.IsCarOwner)
+    {
+        <!-- Car Name input -->
+        <div class="form-outline mb-4">
+            <input type="text" id="carName" class="form-control" @bind="@User.CarName" />
+            <label class="form-label" for="carName">اسم او نوع السيارة</label>
+        </div>
+
+        <!-- Car Capacity input -->
+        <div class="form-outline mb-4">
+            <input type="number" id="carCapacity" class="form-control" @bind="@User.CarCapacity" />
+            <label class="form-label" for="carCapacity">سعة سيارة بدون السائق</label>
+        </div>
+
+        <!-- Other Notes input -->
+        <div class="form-outline mb-4">
+            <input type="text" id="otherNotes" class="form-control" @bind="@User.OtherNotes" />
+            <label class="form-label" for="otherNotes">ملاحظات اخرى</label>
+        </div>
+    }
+    <div class="text-center">
+        <input type="submit" class="btn btn-primary" value="تسجيل" />
+        <p>لديك حساب؟ <a href="SignIn">تسجيل الدخول</a></p>
+        <!-- ToDO: sign up with facebook, google etc ... here-->
+    </div>
+</EditForm>
+
+
+@code {
+    private UserRegister User { get; set; } = new UserRegister { CarCapacity = 4 };
+
+    private void RegisterUser()
+    {
+        string x = User.Name;
+    }
+
+    private void CheckboxClicked(object checkedValue)
+    {
+        if ((bool)checkedValue)
+        {
+            User.IsCarOwner = true;
+        }
+        else
+        {
+            User.IsCarOwner = false;
+        }
+    }
+}

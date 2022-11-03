@@ -1,27 +1,29 @@
-﻿using Microsoft.AspNetCore.Components.WebView.Maui;
-using BZUTransport.Data;
-
-namespace BZUTransport;
-
-public static class MauiProgram
+﻿namespace BZUTransport
 {
-	public static MauiApp CreateMauiApp()
-	{
-		var builder = MauiApp.CreateBuilder();
-		builder
-			.UseMauiApp<App>()
-			.ConfigureFonts(fonts =>
-			{
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-			});
+    using Microsoft.AspNetCore.Components.WebView.Maui;
+    using BZUTransport.Data;
 
-		builder.Services.AddMauiBlazorWebView();
-		#if DEBUG
-		builder.Services.AddBlazorWebViewDeveloperTools();
+    public static class MauiProgram
+    {
+        public static MauiApp CreateMauiApp()
+        {
+            var builder = MauiApp.CreateBuilder();
+            builder
+                .UseMauiApp<App>()
+                .ConfigureFonts(fonts =>
+                {
+                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                });
+
+            builder.Services.AddMauiBlazorWebView();
+#if DEBUG
+            builder.Services.AddBlazorWebViewDeveloperTools();
 #endif
-		
-		builder.Services.AddSingleton<WeatherForecastService>();
 
-		return builder.Build();
-	}
+            builder.Services.AddSingleton<WeatherForecastService>();
+
+            return builder.Build();
+        }
+    }
+
 }
