@@ -1,4 +1,5 @@
 ﻿@page "/Register"
+@inject ILogger<Register> logger
 
 <EditForm Model="@User" OnValidSubmit="RegisterUser">
     <DataAnnotationsValidator />
@@ -67,7 +68,8 @@
 
     private void RegisterUser()
     {
-        string x = User.Name;
+        this.logger.LogInformation("starting register process");
+        throw new NotImplementedException();
     }
 
     private void CheckboxClicked(object checkedValue)
