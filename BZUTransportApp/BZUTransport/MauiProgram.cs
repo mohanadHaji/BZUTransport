@@ -1,9 +1,14 @@
 ﻿namespace BZUTransport
 {
-    using Microsoft.AspNetCore.Components.WebView.Maui;
     using BZUTransport.Data;
+    using BZUTransport.ConfigurationExtensions;
     using Microsoft.Extensions.Logging;
     using MetroLog.MicrosoftExtensions;
+    using Common.MongoDatabase.UserInfo;
+    using Microsoft.Extensions.Options;
+    using Microsoft.Extensions.DependencyInjection;
+    using MongoDB.Driver;
+    using Microsoft.Extensions.Configuration;
 
     public static class MauiProgram
     {
@@ -25,8 +30,9 @@
 #endif
             builder.Logging.AddTraceLogger(_ => { });
             builder.Logging.AddInMemoryLogger(_ => { });
-            builder.Services.AddSingleton<WeatherForecastService>();
 
+            builder.AddAppSettings();
+            builder.AddMongoDB();
             return builder.Build();
         }
     }

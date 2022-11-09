@@ -1,6 +1,6 @@
 ﻿namespace BZUTransport.Models
 {
-    using BZUTransport.RequestValidiation;
+    using Common.RequestValidiation;
     using System.ComponentModel.DataAnnotations;
 
     public class UserLogin
