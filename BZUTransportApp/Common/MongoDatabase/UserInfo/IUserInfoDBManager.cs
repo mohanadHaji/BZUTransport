@@ -14,16 +14,15 @@
         /// <summary>
         /// Gets the 1st user that matches the conidition
         /// </summary>
-        /// <param name="findByCondition">The condition ofr getting the user</param>
+        /// <param name="Id">user Id</param>
         /// <returns>User information</returns>
-        UserInfo GetUser(Func<UserInfo, bool> findByCondition);
+        UserInfo GetUser(string Id);
 
         /// <summary>
-        /// Gets a list of students based on conidition
+        /// Gets a the lists of users
         /// </summary>
-        /// <param name="findByCondition">Conidition to match with</param>
-        /// <returns>List of matching User info</returns>
-        List<UserInfo> GetUsers(Func<UserInfo, bool> findByCondition);
+        /// <returns>List of all usres</returns>
+        List<UserInfo> GetUsers();
 
         /// <summary>
         /// Remove one user based on user id

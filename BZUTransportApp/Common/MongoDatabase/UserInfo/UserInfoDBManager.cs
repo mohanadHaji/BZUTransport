@@ -26,18 +26,18 @@
         }
 
         /// <inheritdoc/>
-        public List<UserInfo> GetUsers(Func<UserInfo, bool> findByCondition)
+        public List<UserInfo> GetUsers()
         {
-            var users = this.UsersCollection.Find(user => findByCondition(user)).ToList();
-            this.logger.LogInformation($"Users where retrived successfully with count {users.Count} users");
+            var users = this.UsersCollection.Find(user => true)?.ToList();
+            this.logger.LogInformation($"Users where retrived successfully with count {users?.Count} users");
             return users;
         }
 
         /// <inheritdoc/>
-        public UserInfo GetUser(Func<UserInfo, bool> findByCondition)
+        public UserInfo GetUser(string Id)
         {
-            var users = this.UsersCollection.Find(user => findByCondition(user)).FirstOrDefault();
-            this.logger.LogInformation($"Users {users.Id} where retrived successfully");
+            var users = this.UsersCollection.Find(user => string.Equals(user.Id, Id))?.FirstOrDefault();
+            this.logger.LogInformation($"Users {users?.Id} where retrived successfully");
             return users;
         }
 

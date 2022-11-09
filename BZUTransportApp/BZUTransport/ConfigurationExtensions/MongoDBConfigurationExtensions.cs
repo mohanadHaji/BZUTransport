@@ -9,12 +9,18 @@
     {
         public static void AddMongoDB(this MauiAppBuilder builder)
         {
-            builder.Services.Configure<UserInfoDbSettings>(user => builder.Configuration.GetSection(nameof(UserInfoDbSettings)));
-            builder.Services.AddSingleton<IUserInfoDbSettings>(sp => sp.GetRequiredService<IOptions<UserInfoDbSettings>>().Value);
+            IUserInfoDbSettings userInfoDbSettings = new UserInfoDbSettings
+            {
+                ConnectionString = builder.Configuration.GetValue<string>("UserInfoDbSettings:ConnectionString"),
+                DatabaseName = builder.Configuration.GetValue<string>("UserInfoDbSettings:DatabaseName"),
+                UserInfoCollectionName = builder.Configuration.GetValue<string>("UserInfoDbSettings:UserInfoCollectionName")
+            };
+
+            builder.Services.AddSingleton<IUserInfoDbSettings>(userInfoDbSettings);
 #if DEBUG
             // add mocking data base
-            builder.Services.AddSingleton<IMongoClient>(new MongoClient(builder.Configuration.GetValue<string>("UserInfoDbSettings:ConnectionString")));
-            builder.Services.AddScoped<IUserInfoDBManager, UserInfoDBManager>();
+            builder.Services.AddSingleton<IMongoClient>(new MongoClient());
+            builder.Services.AddScoped<IUserInfoDBManager, MockUserInfoDBManager>();
 #else
             // add the real client
             builder.Services.AddSingleton<IMongoClient>(new MongoClient(builder.Configuration.GetValue<string>("UserInfoDbSettings:ConnectionString")));
