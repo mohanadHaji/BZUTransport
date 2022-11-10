@@ -80,7 +80,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Common\Common.csproj" />
+      <ProjectReference Include="..\Common\BZUCommon.csproj" />
     </ItemGroup>
-
 </Project>

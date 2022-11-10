@@ -1,4 +1,4 @@
-﻿namespace Common.MongoDatabase.UserInfo
+﻿namespace BZUCommon.MongoDatabase.UserInfo
 {
     using System.Linq;
     using Models;
@@ -20,33 +20,41 @@
                 PhoneNumber = "testPhoneNumber"
             }
         };
+
+        /// <inheritdoc/>
         public UserInfo Create(UserInfo userInfo)
         {
             MockUsersList.Add(userInfo);
             return userInfo;
         }
 
+        /// <inheritdoc/>
         public UserInfo GetUser(string Id)
         {
             return MockUsersList.Where(user => string.Equals(user.Id, Id))?.FirstOrDefault();
         }
 
+        /// <inheritdoc/>
         public List<UserInfo> GetUsers()
         {
             return MockUsersList.Where(user => true).ToList();
         }
 
+        /// <inheritdoc/>
         public void RemoveUser(string userId)
         {
             MockUsersList.Remove(this.GetUser(userId));
         }
 
+        /// <inheritdoc/>
         public void UpdateUser(string userId, UserInfo newUserInfo)
         {
-            var user = MockUsersList.FirstOrDefault(user => string.Equals(user.Id, userId));
-            if (user != null)
+            for (int i = 0; i < MockUsersList.Count; i++)
             {
-                user = newUserInfo;
+                if (string.Equals(MockUsersList[i].Id, userId))
+                {
+                    MockUsersList[i] = newUserInfo;
+                }
             }
         }
     }

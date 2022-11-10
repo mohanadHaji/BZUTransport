@@ -1,4 +1,4 @@
-﻿namespace Common.MongoDatabase.UserInfo
+﻿namespace BZUCommon.MongoDatabase.UserInfo
 {
     using Microsoft.Extensions.Logging;
     using Models;
@@ -44,15 +44,29 @@
         /// <inheritdoc/>
         public void RemoveUser(string userId)
         {
-            this.UsersCollection.DeleteOne(user => string.Equals(user.Id, userId));
-            this.logger.LogInformation($"Users {userId} where deleted successfully");
+            var deleteResults = this.UsersCollection.DeleteOne(user => string.Equals(user.Id, userId));
+            if (deleteResults.DeletedCount == 0)
+            {
+                this.logger.LogInformation($"Users {userId} was not found");
+            }
+            else
+            {
+                this.logger.LogInformation($"Users {userId} where deleted successfully");
+            }
         }
 
         /// <inheritdoc/>
         public void UpdateUser(string userId, UserInfo newUserInfo)
         {
-            this.UsersCollection.ReplaceOne(user => string.Equals(user.Id, userId), newUserInfo);
-            this.logger.LogInformation($"Users {userId} where updated successfully");
+            var replaceResults = this.UsersCollection.ReplaceOne(user => string.Equals(user.Id, userId), newUserInfo);
+            if (replaceResults.ModifiedCount == 0)
+            {
+                this.logger.LogInformation($"Users {userId} was not found");
+            }
+            else
+            {
+                this.logger.LogInformation($"Users {userId} where updated successfully");
+            }
         }
     }
 }

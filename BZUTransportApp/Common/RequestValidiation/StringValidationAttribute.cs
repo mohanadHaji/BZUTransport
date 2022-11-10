@@ -1,4 +1,4 @@
-﻿namespace Common.RequestValidiation
+﻿namespace BZUCommon.RequestValidiation
 {
     using System.ComponentModel.DataAnnotations;
     using System.Text.RegularExpressions;

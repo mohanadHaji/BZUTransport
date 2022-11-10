@@ -4,7 +4,7 @@ VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BZUTransport", "BZUTransport\BZUTransport.csproj", "{5E5460D4-1B02-4866-9B0F-9E632E434BDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{49523F2A-1E6E-4B6F-A544-7DF14879234A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BZUCommon", "Common\BZUCommon.csproj", "{49523F2A-1E6E-4B6F-A544-7DF14879234A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

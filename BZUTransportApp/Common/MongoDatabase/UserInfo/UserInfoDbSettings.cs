@@ -1,4 +1,4 @@
-﻿namespace Common.MongoDatabase.UserInfo
+﻿namespace BZUCommon.MongoDatabase.UserInfo
 {
     public class UserInfoDbSettings : IUserInfoDbSettings
     {

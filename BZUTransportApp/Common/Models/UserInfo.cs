@@ -1,4 +1,4 @@
-﻿namespace Common.Models
+﻿namespace BZUCommon.Models
 {
     using MongoDB.Bson;
     using MongoDB.Bson.Serialization.Attributes;

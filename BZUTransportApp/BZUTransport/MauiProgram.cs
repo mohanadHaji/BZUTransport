@@ -1,14 +1,9 @@
 ﻿namespace BZUTransport
 {
-    using BZUTransport.Data;
     using BZUTransport.ConfigurationExtensions;
     using Microsoft.Extensions.Logging;
     using MetroLog.MicrosoftExtensions;
-    using Common.MongoDatabase.UserInfo;
-    using Microsoft.Extensions.Options;
     using Microsoft.Extensions.DependencyInjection;
-    using MongoDB.Driver;
-    using Microsoft.Extensions.Configuration;
 
     public static class MauiProgram
     {

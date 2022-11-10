@@ -1,4 +1,4 @@
-﻿namespace Common.RequestValidiation
+﻿namespace BZUCommon.RequestValidiation
 {
     public static class CommonStrings
     {
