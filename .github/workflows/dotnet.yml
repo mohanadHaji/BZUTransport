@@ -21,7 +21,7 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore workload
-      run: dotnet workload restore
+      run: dotnet workload restore BZUTransportApp/BZUTransportApp.sln
     - name: Restore ios workload
       run: dotnet workload install macos
     - name: Restore dependencies
