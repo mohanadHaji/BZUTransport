@@ -10,3 +10,10 @@ BZUTransportApp/Common/obj
 BZUTransportApp/Common/.vs
 BZUTransportApp\Common\obj\Debug\net6.0
 BZUTransportApp\Common\obj\Debug
+
+BZUTransport/BZUTransportApp/BZUCommonTests/obj/Debug/
+BZUTransportApp/BZUCommonTests/bin
+BZUTransportApp/BZUCommonTests/obj
+BZUTransportApp/BZUCommonTests/.vs
+BZUTransportApp/BZUCommonTests/obj/Debug/net6.0
+BZUTransportApp/BZUCommonTests/obj/Debug

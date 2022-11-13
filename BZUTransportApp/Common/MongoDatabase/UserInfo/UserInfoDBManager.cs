@@ -1,5 +1,6 @@
 ﻿namespace BZUCommon.MongoDatabase.UserInfo
 {
+    using BZUCommon.RequestValidiation;
     using Microsoft.Extensions.Logging;
     using Models;
     using MongoDB.Driver;
@@ -20,6 +21,7 @@
         /// <inheritdoc/>
         public UserInfo Create(UserInfo userInfo)
         {
+            Ensure.IsNotNull(userInfo, nameof(userInfo));
             this.UsersCollection.InsertOne(userInfo);
             this.logger.LogInformation($"user {userInfo.Id} was added successfully");
             return userInfo;
@@ -34,9 +36,10 @@
         }
 
         /// <inheritdoc/>
-        public UserInfo GetUser(string Id)
+        public UserInfo GetUser(string userId)
         {
-            var users = this.UsersCollection.Find(user => string.Equals(user.Id, Id))?.FirstOrDefault();
+            Ensure.StringIsNullOrWhiteSpace(userId, nameof(userId));
+            var users = this.UsersCollection.Find(user => string.Equals(user.Id, userId))?.FirstOrDefault();
             this.logger.LogInformation($"Users {users?.Id} where retrived successfully");
             return users;
         }
@@ -44,6 +47,7 @@
         /// <inheritdoc/>
         public void RemoveUser(string userId)
         {
+            Ensure.StringIsNullOrWhiteSpace(userId, nameof(userId));
             var deleteResults = this.UsersCollection.DeleteOne(user => string.Equals(user.Id, userId));
             if (deleteResults.DeletedCount == 0)
             {
@@ -58,6 +62,8 @@
         /// <inheritdoc/>
         public void UpdateUser(string userId, UserInfo newUserInfo)
         {
+            Ensure.IsNotNull(newUserInfo, nameof(newUserInfo));
+            Ensure.StringIsNullOrWhiteSpace(userId, nameof(userId));
             var replaceResults = this.UsersCollection.ReplaceOne(user => string.Equals(user.Id, userId), newUserInfo);
             if (replaceResults.ModifiedCount == 0)
             {

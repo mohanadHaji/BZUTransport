@@ -14,9 +14,9 @@
         /// <summary>
         /// Gets the 1st user that matches the conidition
         /// </summary>
-        /// <param name="Id">user Id</param>
+        /// <param name="userId">user Id</param>
         /// <returns>User information</returns>
-        UserInfo GetUser(string Id);
+        UserInfo GetUser(string userId);
 
         /// <summary>
         /// Gets a the lists of users
