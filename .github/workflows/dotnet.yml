@@ -12,7 +12,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -20,9 +20,13 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
+    - name: Restore workload
+      run: dotnet workload restore BZUTransportApp/BZUTransportApp.sln
+    - name: Restore project worloads
+      run: dotnet workload restore BZUTransportApp\BZUTransport\BZUTransport.csproj
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore BZUTransportApp
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore BZUTransportApp/BZUTransportApp.sln
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal BZUTransportApp/BZUCommonTests
