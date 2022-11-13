@@ -24,8 +24,6 @@ jobs:
       run: dotnet workload restore BZUTransportApp/BZUTransportApp.sln
     - name: Restore project worloads
       run: dotnet workload restore BZUTransportApp\BZUTransport\BZUTransport.csproj
-    - name: Restore ios workload
-      run: dotnet workload install macos
     - name: Restore dependencies
       run: dotnet restore BZUTransportApp
     - name: Build
