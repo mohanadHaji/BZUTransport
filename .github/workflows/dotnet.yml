@@ -21,10 +21,10 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore workload
-      run: dotnet workload restore [/home/runner/work/BZUTransport/BZUTransport/BZUTransportApp/BZUTransport/BZUTransport.csproj]
+      run: dotnet workload restore BZUTransportApp/BZUTransport/BZUTransport.csproj
     - name: Restore dependencies
       run: dotnet restore BZUTransportApp
     - name: Build
       run: dotnet build --no-restore BZUTransportApp/BZUTransportApp.sln
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal BZUTransportApp/BZUCommonTests
