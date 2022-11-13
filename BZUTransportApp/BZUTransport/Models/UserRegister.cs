@@ -1,9 +1,8 @@
-﻿using BZUTransport.RequestValidiation;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-
-namespace BZUTransport.Models
+﻿namespace BZUTransport.Models
 {
+    using BZUCommon.RequestValidiation;
+    using System.ComponentModel.DataAnnotations;
+
     public class UserRegister
     {
         [Required]

@@ -61,6 +61,10 @@
     </ItemGroup>
 
     <ItemGroup>
+      <EmbeddedResource Include="Properties\appsettings.json" />
+    </ItemGroup>
+
+    <ItemGroup>
       <MauiImage Include="wwwroot\Images\weed.svg" />
     </ItemGroup>
 
@@ -70,6 +74,12 @@
 
     <ItemGroup>
       <PackageReference Include="MetroLog.Maui" Version="2.0.1" />
+      <PackageReference Include="MongoDB.Driver" Version="2.18.0" />
+	  <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.0" />
+	  <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Common\BZUCommon.csproj" />
+    </ItemGroup>
 </Project>
