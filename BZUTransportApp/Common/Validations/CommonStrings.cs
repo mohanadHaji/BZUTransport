@@ -9,6 +9,6 @@
         // regex is so basic it need to modifed
         public const string PhoneRegex = "^(^\\s*?\\d{10,14})$";
 
-        public const string BadPassWordMessage = "\r\n            \"كلمة المرور لا تطابق معاير الامان:\" +\r\n            \" 1. يجب ان تكون من 8 حروف\" +\r\n            \" 2. حرفان في الأحرف الكبيرة\" +\r\n            \" 3. حرف خاص واحد على الاقل\" +\r\n            \" 4. رقمين\" +\r\n            \" 5. ثلاث احرف صغيرة\"";
+        public const string BadPassWordMessage = "\r\n            \"كلمة المرور لا تطابق معاير الامان:\r\n            يجب ان تكون من 8 حروف\r\n            حرفان في الأحرف الكبيرة\r\n            حرف خاص واحد على الاقل\r\n            رقمين\r\n             ثلاث احرف صغيرة";
     }
 }

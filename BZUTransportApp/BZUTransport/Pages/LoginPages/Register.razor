@@ -5,32 +5,38 @@
     <DataAnnotationsValidator />
     <!-- Name input -->
     <div class="form-outline mb-4">
-        <input type="text" id="name" class="form-control" @bind="@User.Name" />
-        <label class="form-label" for="name">اسمك الكامل</label>
+        <input type="text" id="name" class="form-control" @bind="@this.User.Name" />
+        <label class="form-label" for="name">اسمك الكامل</label> <br />
+        <span class="alert-danger">@this.User.ErrorMessages.Name</span>
     </div>
 
     <!-- Email input -->
     <div class="form-outline mb-4">
-        <input type="email" id="email" class="form-control" @bind="@User.EmailAddress" />
-        <label class="form-label" for="email">بريدك الاكتروني</label>
+        <input type="email" id="email" class="form-control" @bind="@this.User.EmailAddress" />
+        <label class="form-label" for="email">بريدك الاكتروني</label> <br />
+        <span class="alert-danger">@this.User.ErrorMessages.EmailAddress</span>
     </div>
 
     <!-- Phone Number input -->
     <div class="form-outline mb-4">
-        <input type="number" id="phone" class="form-control" @bind="@User.PhoneNumber" />
-        <label class="form-label" for="phone">رقم جوالك</label>
+        <input type="number" id="phone" class="form-control" @bind="@this.User.PhoneNumber" />
+        <label class="form-label" for="phone">رقم جوالك</label> <br />
+        <span class="alert-danger">@this.User.ErrorMessages.PhoneNumber</span>
     </div>
 
     <!-- Password input -->
     <div class="form-outline mb-4">
-        <input type="password" id="password" class="form-control" @bind="@User.Password" />
-        <label class="form-label" for="password">كلمة السر</label>
+        <input type="password" id="password" class="form-control" @bind="@this.User.Password" />
+        <label class="form-label" for="password">كلمة السر</label> <br />
+        <span class="alert-danger">@this.User.ErrorMessages.Password</span>
     </div>
 
     <!-- Confirm Password input -->
+    <!-- change this to @onChange to test the-->
     <div class="form-outline mb-4">
-        <input type="password" id="confirmPassword" class="form-control" @bind="@User.ConfirmPassword" />
-        <label class="form-label" for="confirmPassword">تاكيد كلمة المرور</label>
+        <input type="password" id="confirmPassword" class="form-control" @bind="@this.User.ConfirmPassword" />
+        <label class="form-label" for="confirmPassword">تاكيد كلمة المرور</label> <br />
+        <span class="alert-danger">@this.User.ErrorMessages.ConfirmPassword</span>
     </div>
 
     <input type="checkbox" @onchange="eventArgs => { CheckboxClicked(eventArgs.Value); }" /> هل تمتلك سيارة؟ 
@@ -39,19 +45,19 @@
     {
         <!-- Car Name input -->
         <div class="form-outline mb-4">
-            <input type="text" id="carName" class="form-control" @bind="@User.CarName" />
+            <input type="text" id="carName" class="form-control" @bind="@this.User.CarName" />
             <label class="form-label" for="carName">اسم او نوع السيارة</label>
         </div>
 
         <!-- Car Capacity input -->
         <div class="form-outline mb-4">
-            <input type="number" id="carCapacity" class="form-control" @bind="@User.CarCapacity" />
+            <input type="number" id="carCapacity" class="form-control" @bind="@this.User.CarCapacity" />
             <label class="form-label" for="carCapacity">سعة سيارة بدون السائق</label>
         </div>
 
         <!-- Other Notes input -->
         <div class="form-outline mb-4">
-            <input type="text" id="otherNotes" class="form-control" @bind="@User.OtherNotes" />
+            <input type="text" id="otherNotes" class="form-control" @bind="@this.User.OtherNotes" />
             <label class="form-label" for="otherNotes">ملاحظات اخرى</label>
         </div>
     }
@@ -64,7 +70,12 @@
 
 
 @code {
-    private UserRegister User { get; set; } = new UserRegister { CarCapacity = 4 };
+    private User User { get; set; }
+
+    protected override void OnInitialized()
+    {
+        this.User = new User(this.logger);
+    }
 
     private void RegisterUser()
     {

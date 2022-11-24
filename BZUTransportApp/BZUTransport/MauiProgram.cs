@@ -4,6 +4,7 @@
     using Microsoft.Extensions.Logging;
     using MetroLog.MicrosoftExtensions;
     using Microsoft.Extensions.DependencyInjection;
+    using BZUTransport.RequestValidations.LoginRequest;
 
     public static class MauiProgram
     {
