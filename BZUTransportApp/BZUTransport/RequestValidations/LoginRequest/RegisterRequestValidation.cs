@@ -1,9 +1,9 @@
-﻿using BZUCommon.RequestValidiation;
-using BZUTransport.Models;
-using Microsoft.Extensions.Logging;
-
-namespace BZUTransport.RequestValidations.LoginRequest
+﻿namespace BZUTransport.RequestValidations.LoginRequest
 {
+    using BZUCommon.RequestValidiation;
+    using BZUTransport.Models;
+    using Microsoft.Extensions.Logging;
+
     public class RegisterRequestValidation : LoginRequestBaseValidation
     {
         public RegisterRequestValidation(ILogger logger) : base(logger)

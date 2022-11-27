@@ -19,6 +19,13 @@
         UserInfo GetUser(string userId);
 
         /// <summary>
+        /// Get user based on email address.
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        UserInfo GetUserByEmail(string email);
+
+        /// <summary>
         /// Gets a the lists of users
         /// </summary>
         /// <returns>List of all usres</returns>

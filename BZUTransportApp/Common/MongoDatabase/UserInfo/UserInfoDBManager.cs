@@ -45,6 +45,15 @@
         }
 
         /// <inheritdoc/>
+        public UserInfo GetUserByEmail(string email)
+        {
+            Ensure.StringIsNullOrWhiteSpace(email, nameof(email));
+            var users = this.UsersCollection.Find(user => string.Equals(user.EmailAddress, email))?.FirstOrDefault();
+            this.logger.LogInformation($"Users {users?.Id} where retrived successfully");
+            return users;
+        }
+
+        /// <inheritdoc/>
         public void RemoveUser(string userId)
         {
             Ensure.StringIsNullOrWhiteSpace(userId, nameof(userId));

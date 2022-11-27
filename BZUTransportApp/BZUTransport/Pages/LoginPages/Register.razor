@@ -80,7 +80,10 @@
     private void RegisterUser()
     {
         this.logger.LogInformation("starting register process");
-        throw new NotImplementedException();
+        using (var validation = new RegisterRequestValidation(this.logger))
+        {
+            validation.ValidateRequest(this.User, );
+        }
     }
 
     private void CheckboxClicked(object checkedValue)
